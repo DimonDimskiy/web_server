@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<Title> Notebook </Title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+<h1 align="center">Notebook</h1>
+    {% if notes|length < 1 %}
+    <h3>There are no notes, create one below</h3>
+    {% else %}
+    <table>
+        <thead>
+            <tr>
+                <td class="col1">Added</td>
+                <td>Note</td>
+                <td class="col2">Option</td>
+            </tr>
+        </thead>
+        <tbody>
+        {% for note in notes %}
+            <tr>
+                <td>{{ note.date_created.ctime() }}</td>
+                <td>{{ note.content }}</td>
+                <td>
+                    <a href="/delete/{{ note.id }}">Delete</a>
+                    <a href="/update/{{ note.id }}">Update</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        {% endif %}
+    </table>
+
+    <form action="/" method="POST">
+        <input class="field1" type="text" name="content" id="content">
+            <br>
+        <input class="button1" type="submit" value="Add note">
+    </form>
+
+</div>
+{% endblock %}

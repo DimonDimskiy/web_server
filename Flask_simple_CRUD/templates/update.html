@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<Title> Notebook </Title>
+{% endblock %}
+
+{% block body %}
+    <div class="content">
+<h1 align="center">Update note</h1>
+    <form action="/update/{{ note.id }}" method="POST">
+        <input class="field1" type="text" name="content" id="content" value="{{ note.content }}">
+            <br>
+        <input class="button1" type="submit" value="Update note">
+    </form>
+
+
+
+
+</div>
+{% endblock %}
